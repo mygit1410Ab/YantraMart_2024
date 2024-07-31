@@ -12,9 +12,15 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		6C284F37F1BB48E9B0F4B828 /* Urbanist-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9163EDD0DA99466EBD5D270F /* Urbanist-Bold.ttf */; };
+		6E80BE389BC444FABF6165AB /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AC2D3F878374259A19EFC86 /* Urbanist-Medium.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-Demo1-Demo1Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Demo1-Demo1Tests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		87140789E3A541ACACFC7D53 /* Urbanist-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DE20D3CA1BD489D92FD7553 /* Urbanist-SemiBold.ttf */; };
 		8A7E9B2B5804CD6BD82E9E85 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1AFCAAD688B1276A0D48D912 /* PrivacyInfo.xcprivacy */; };
+		94398F6DB70C419E8040002C /* Urbanist-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0B2D0E1AB004EE0B7F55959 /* Urbanist-Thin.ttf */; };
+		9DE8F1F02AF74B9999DB7C61 /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CDDE08EFF894BE6A2DE764F /* Urbanist-Regular.ttf */; };
+		C36D3045B89B43E7A17194A3 /* Urbanist-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D11CB4A2C54779A7E54E90 /* Urbanist-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +45,19 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Demo1/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Demo1/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Demo1-Demo1Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo1-Demo1Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1AFCAAD688B1276A0D48D912 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Demo1/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1AFCAAD688B1276A0D48D912 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Demo1/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1CDDE08EFF894BE6A2DE764F /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Urbanist-Regular.ttf"; path = "../src/assets/fonts/Urbanist-Regular.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Demo1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo1.debug.xcconfig"; path = "Target Support Files/Pods-Demo1/Pods-Demo1.debug.xcconfig"; sourceTree = "<group>"; };
+		4DE20D3CA1BD489D92FD7553 /* Urbanist-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Urbanist-SemiBold.ttf"; path = "../src/assets/fonts/Urbanist-SemiBold.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Demo1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo1.release.xcconfig"; path = "Target Support Files/Pods-Demo1/Pods-Demo1.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Demo1-Demo1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo1-Demo1Tests.debug.xcconfig"; path = "Target Support Files/Pods-Demo1-Demo1Tests/Pods-Demo1-Demo1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Demo1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo1.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AC2D3F878374259A19EFC86 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Urbanist-Medium.ttf"; path = "../src/assets/fonts/Urbanist-Medium.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Demo1/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Demo1-Demo1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo1-Demo1Tests.release.xcconfig"; path = "Target Support Files/Pods-Demo1-Demo1Tests/Pods-Demo1-Demo1Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9163EDD0DA99466EBD5D270F /* Urbanist-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Urbanist-Bold.ttf"; path = "../src/assets/fonts/Urbanist-Bold.ttf"; sourceTree = "<group>"; };
+		B0B2D0E1AB004EE0B7F55959 /* Urbanist-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Urbanist-Thin.ttf"; path = "../src/assets/fonts/Urbanist-Thin.ttf"; sourceTree = "<group>"; };
+		B7D11CB4A2C54779A7E54E90 /* Urbanist-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Urbanist-Light.ttf"; path = "../src/assets/fonts/Urbanist-Light.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -84,6 +96,19 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0A94567D26F1435DB35681EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9163EDD0DA99466EBD5D270F /* Urbanist-Bold.ttf */,
+				B7D11CB4A2C54779A7E54E90 /* Urbanist-Light.ttf */,
+				6AC2D3F878374259A19EFC86 /* Urbanist-Medium.ttf */,
+				1CDDE08EFF894BE6A2DE764F /* Urbanist-Regular.ttf */,
+				4DE20D3CA1BD489D92FD7553 /* Urbanist-SemiBold.ttf */,
+				B0B2D0E1AB004EE0B7F55959 /* Urbanist-Thin.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* Demo1 */ = {
@@ -127,6 +152,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				0A94567D26F1435DB35681EB /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -249,6 +275,12 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				8A7E9B2B5804CD6BD82E9E85 /* PrivacyInfo.xcprivacy in Resources */,
+				6C284F37F1BB48E9B0F4B828 /* Urbanist-Bold.ttf in Resources */,
+				C36D3045B89B43E7A17194A3 /* Urbanist-Light.ttf in Resources */,
+				6E80BE389BC444FABF6165AB /* Urbanist-Medium.ttf in Resources */,
+				9DE8F1F02AF74B9999DB7C61 /* Urbanist-Regular.ttf in Resources */,
+				87140789E3A541ACACFC7D53 /* Urbanist-SemiBold.ttf in Resources */,
+				94398F6DB70C419E8040002C /* Urbanist-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,19 +504,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G479V3LX2B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Demo1/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Yantramart;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.yantramart.myapplication;
 				PRODUCT_NAME = Demo1;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -499,18 +535,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G479V3LX2B;
 				INFOPLIST_FILE = Demo1/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Yantramart;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.yantramart.myapplication;
 				PRODUCT_NAME = Demo1;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
