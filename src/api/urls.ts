@@ -1,11 +1,12 @@
 const URLs = {
   LOGIN_USER: "/App_api/login",
+  SOCIAL_LOGIN_USER: "/App_api/checkLogin",
   GET_SUB_CATEGORY: "/App_api/getsubCategory",
   GET_PRODUCTS: "/App_api/getProduct",
   SIGNUP_USER: "/App_api/sign_up/",
   GET_CATEGORY: "/App_api/getHomePageCategory",
   GET_SLIDER: "/App_api/getSlider",
-  
+
   GET_Discount_Banner: "/App_api/getDiscountBanner",
   Get_New_Collection_Product: "/App_api/getNewCollectionProduct",
   Get_Explore_Deal_Product: "/App_api/getExploreDealProduct",
@@ -20,6 +21,6 @@ const URLs = {
 
 
 
-  
+
 };
 export default URLs;

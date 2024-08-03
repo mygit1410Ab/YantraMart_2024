@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
-import { StyleSheet, Text, View, ImageBackground, Image, Dimensions, Modal, Alert, Pressable } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, Image, Dimensions, Modal, Alert, Pressable, TouchableOpacity } from "react-native";
 import { colors, fonts } from "../configs/Configs";
 import { fontStyles } from "../style/FontsStyle";
 import { useEffect, useState } from "react";
@@ -11,12 +11,14 @@ import { useIsFocused } from "@react-navigation/native";
 import LocalStorage from "../utils/LocalStorage";
 import FAButton from "../components/FAButton";
 import { Button } from "react-native-paper";
-// import { GoogleSignin, User } from '@react-native-google-signin/google-signin';
-// import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-// import { googleLogIn } from "../fireBase/GoogleLogin";
+import { GoogleSignin, User } from '@react-native-google-signin/google-signin';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { googleLogIn } from "../fireBase/GoogleLogin";
 import Loader from "../components/Loader";
 import Toast from "react-native-toast-message";
 import useAuthAPI from "../hooks/useAuthAPI";
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import { SOCIAL_LOGIN_USER } from "../api/auth";
 
 
 
@@ -66,73 +68,75 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
     }
   };
 
-  // GoogleSignin.configure({
-  //   webClientId: '106922038659-ohqeeon6o913eik20j9148st38nc3kst.apps.googleusercontent.com',
-  // });
+  GoogleSignin.configure({
+    webClientId: '106922038659-ohqeeon6o913eik20j9148st38nc3kst.apps.googleusercontent.com',
+  });
 
 
 
-  // const googleLoginHandler = async () => {
-  //   // console.log('googleLogInPressed');
-  //   setModalVisible(true);
-  //   try {
-  //     const res = await googleLogIn();
-  //     if (res) {
-  //       const userProfile: GoogleLoginResponse = res as GoogleLoginResponse;
-  //       // console.log('googlePressed2', userProfile);
-  //       const firstName = userProfile.firstName
-  //       const lastName = userProfile.lastName
-  //       const email = userProfile.email
-  //       const userName = userProfile.email
-  //       const password = userProfile.uid
+  const googleLoginHandler = async () => {
+    // console.log('googleLogInPressed');
+    setModalVisible(true);
+    try {
+      const res = await googleLogIn();
+      console.log('=======>>', res)
+      if (res) {
+        const userProfile: GoogleLoginResponse = res as GoogleLoginResponse;
+        console.log('googlePressed2', userProfile);
+        const firstName = userProfile.firstName
+        const lastName = userProfile.lastName
+        const email = userProfile.email
+        const userName = userProfile.email
+        const password = "123456"
 
-  //       // try {
-  //       //   const response = await login_user(email, password);
-  //       //   if (AppSetting.isAuthDebugEnable) {
-  //       //     console.log("call_login_user====>>", response);
-  //       //   }
-  //       //   if (response.status) {
-  //       //     LocalStorage.setItem("isLoggedIN", true);
-  //       //     Toast.show({ text1: response.message, type: "success" });
-  //       //     navigation.navigate("MainTabScreen");
-  //       //   } else if (response.data.status == false && response.data.message == 'User does not exist.') {
-  //       //     console.log('kkkkkkkkkkkkk')
-  //       //   }
-  //       //   else {
-  //       //     Toast.show({
-  //       //       text1: "Failed",
-  //       //       text2: response.message,
-  //       //       type: "failure",
-  //       //     });
-  //       //   }
-  //       // } catch (err) {
-  //       //   Toast.show({
-  //       //     text1: "Failed",
-  //       //     text2: "Please try after some time",
-  //       //     type: "failure",
-  //       //   });
-  //       // }
-  //     }
-  //   } finally {
-  //     setModalVisible(false);
-  //   }
-  // };
+        try {
+          const response = await SOCIAL_LOGIN_USER(email);
+          console.log("call_login_user====>>", response);
+          if (AppSetting.isAuthDebugEnable) {
+            console.log("call_login_user====>>", response);
+          }
+          if (response.status) {
+            LocalStorage.setItem("isLoggedIN", true);
+            Toast.show({ text1: response.message, type: "success" });
+            navigation.navigate("MainTabScreen");
+          } else if (response.data.status == false && response.data.message == 'User does not exist.') {
+            console.log('kkkkkkkkkkkkk')
+          }
+          else {
+            Toast.show({
+              text1: "Failed",
+              text2: response.message,
+              type: "failure",
+            });
+          }
+        } catch (err) {
+          Toast.show({
+            text1: "Failed",
+            text2: "Please try after some time",
+            type: "failure",
+          });
+        }
+      }
+    } finally {
+      setModalVisible(false);
+    }
+  };
 
-  // const googleLogoutHandler = async () => {
-  //   // console.log('googlePressedLogout');
-  //   try {
-  //     // Sign out from Firebase
-  //     await auth().signOut();
+  const googleLogoutHandler = async () => {
+    // console.log('googlePressedLogout');
+    try {
+      // Sign out from Firebase
+      await auth().signOut();
 
-  //     // Sign out from Google
-  //     await GoogleSignin.revokeAccess();
-  //     await GoogleSignin.signOut();
+      // Sign out from Google
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
 
-  //     // console.log('User signed out successfully');
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+      // console.log('User signed out successfully');
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 
   return (
@@ -267,21 +271,52 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
               }}
             />
           </View>
+          <TouchableOpacity onPress={googleLoginHandler}
+            style={{
+              alignItems: 'center',
+              flexDirection: 'row',
+              width: '40%',
+              paddingHorizontal: 20,
+              alignSelf: 'center',
+              marginTop: 20,
+              backgroundColor: '#fff',
+              shadowColor: '#171717',
+              shadowOffset: { width: -2, height: 4 },
+              shadowOpacity: 0.2,
+              shadowRadius: 3,
+              elevation: 5,
+              borderRadius: 10,
+              paddingVertical: 4
+
+
+            }}>
+            <Text style={[fontStyles.bigButton_text, { color: colors.darkGreen, textAlign: 'center' }]}>
+              {"Login with   "}
+            </Text>
+            <FontAwesome
+              size={25}
+              color={colors.darkGreen}
+              name={'google'}
+            />
+          </TouchableOpacity>
+          <Text onPress={googleLogoutHandler}>
+            logout
+          </Text>
         </View>
 
 
-        {/* {modalVisible !== false &&
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisible}
-              onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-                setModalVisible(!modalVisible);
-              }}>
-              <Loader />
-            </Modal>
-          } */}
+        {modalVisible !== false &&
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+              setModalVisible(!modalVisible);
+            }}>
+            <Loader />
+          </Modal>
+        }
       </ImageBackground>
     </View>
   );

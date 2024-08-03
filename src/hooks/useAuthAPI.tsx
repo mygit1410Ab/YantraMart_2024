@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { useState } from "react";
-import { LOGIN_USER, REGSITER_USER } from "../api/auth";
+import { LOGIN_USER, REGSITER_USER, SOCIAL_LOGIN_USER } from "../api/auth";
 
 const useAuthAPI = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,6 +11,20 @@ const useAuthAPI = () => {
     setIsLoading(true);
     try {
       const response = await LOGIN_USER(user_email, password);
+      return response;
+    } catch (err) {
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const social_login_user = async (
+    user_email: string,
+  ): Promise<any> => {
+    setIsLoading(true);
+    try {
+      const response = await SOCIAL_LOGIN_USER(user_email);
+      console.log("useAuthAPI======>", response)
       return response;
     } catch (err) {
       setIsLoading(false);
@@ -62,6 +76,7 @@ const useAuthAPI = () => {
     isLoading,
     login_user,
     register_user,
+    social_login_user
   };
 };
 

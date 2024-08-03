@@ -17,6 +17,29 @@ const LOGIN_USER = async (
       user_email: user_email,
       password: password,
     });
+    console.log('============>>>>==', response)
+    if (AppSetting.isAuthDebugEnable) {
+      // console.log("LOGIN_USER Response=====>>>>", JSON.stringify(response));
+    }
+    if (response.data.success) {
+      return response.data;
+    } else {
+      return response.data;
+    }
+  } catch (err: any) {
+    if (AppSetting.isAuthDebugEnable) {
+      console.error("LOGIN_USER Error=====>>>>", err.response);
+    }
+    return err.response.data;
+  }
+};
+const SOCIAL_LOGIN_USER = async (
+  user_email: string,
+): Promise<NetworkResponse<any>> => {
+  try {
+    const response = await APIClient.post(URLs.SOCIAL_LOGIN_USER, {
+      user_email: user_email,
+    });
     if (AppSetting.isAuthDebugEnable) {
       // console.log("LOGIN_USER Response=====>>>>", JSON.stringify(response));
     }
@@ -87,4 +110,4 @@ const REGSITER_USER = async (
 //   }
 // };
 
-export { LOGIN_USER, REGSITER_USER };
+export { LOGIN_USER, REGSITER_USER, SOCIAL_LOGIN_USER };

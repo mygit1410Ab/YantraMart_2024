@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "106922038659",
+    "project_id": "yantramart-81645",
+    "storage_bucket": "yantramart-81645.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106922038659:android:4fa4881fa44b81eb5a52b6",
+        "android_client_info": {
+          "package_name": "com.yantramartAb1410"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106922038659-4ucpp3r8p8fssl7lp0re828s2i6b2fdv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yantramartAb1410",
+            "certificate_hash": "2ae26dbf41ea00ce60b95d8b89897b3edc0ca2ee"
+          }
+        },
+        {
+          "client_id": "106922038659-m4kb5unfhjif1tomobetib7ic5f2v9ev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yantramartAb1410",
+            "certificate_hash": "67cbd9a8f5807a9c25be264dcd9c328134e18685"
+          }
+        },
+        {
+          "client_id": "106922038659-ohqeeon6o913eik20j9148st38nc3kst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa44ZmvhZHS2rVJnVvbsSvemDQZNNvFbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106922038659-cgv94778421r4ak6tak4thmcc233a07s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "106922038659-3tumqh9kruufhnjad2t62dsaodi8nk6k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yantramart.myapplication"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
