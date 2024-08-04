@@ -220,7 +220,7 @@ const NewProductDescriptionscreen = () => {
             showsHorizontalScrollIndicator={false}
           >
             <View style={{}}>
-              <View style={styles.sliderCard}>
+              <View style={[styles.sliderCard, { height: itemWidth }]}>
                 {/* <TouchableOpacity style={styles.shareBtn}>
                   <FontAwesome name='share' size={30} color={'#000'} />
                 </TouchableOpacity> */}

@@ -30,7 +30,9 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
   const [companyName, setCompanyName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [genderValue, setGenderValue] = useState("Male");
-  const { login_user } = useAuthAPI();
+  const { social_login_user } = useAuthAPI();
+  const imagePath = 'https://yantramart.com/uploads/profile_photos/thumb/'
+
 
 
 
@@ -92,17 +94,23 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
         try {
           const response = await SOCIAL_LOGIN_USER(email);
           console.log("call_login_user====>>", response);
+
           if (AppSetting.isAuthDebugEnable) {
-            console.log("call_login_user====>>", response);
+            // console.log("call_login_user====>>", response);
           }
           if (response.status) {
             LocalStorage.setItem("isLoggedIN", true);
+            const userData = {
+              image: `${imagePath}${response?.data?.image}`,
+              name: `${response?.data?.name}`,
+              user_id: `${response?.data?.id}`,
+              logIn: true
+            }
+            LocalStorage.setItem("userData", userData);
             Toast.show({ text1: response.message, type: "success" });
-            navigation.navigate("MainTabScreen");
-          } else if (response.data.status == false && response.data.message == 'User does not exist.') {
-            console.log('kkkkkkkkkkkkk')
-          }
-          else {
+            navigation.navigate("TopUserScreen", { item: userData });
+            console.log('0000000>>>>>>>>===')
+          } else {
             Toast.show({
               text1: "Failed",
               text2: response.message,
@@ -122,21 +130,21 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
     }
   };
 
-  const googleLogoutHandler = async () => {
-    // console.log('googlePressedLogout');
-    try {
-      // Sign out from Firebase
-      await auth().signOut();
+  // const googleLogoutHandler = async () => {
+  //   // console.log('googlePressedLogout');
+  //   try {
+  //     // Sign out from Firebase
+  //     await auth().signOut();
 
-      // Sign out from Google
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
+  //     // Sign out from Google
+  //     await GoogleSignin.revokeAccess();
+  //     await GoogleSignin.signOut();
 
-      // console.log('User signed out successfully');
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //     // console.log('User signed out successfully');
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
 
   return (
@@ -299,9 +307,6 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
               name={'google'}
             />
           </TouchableOpacity>
-          <Text onPress={googleLogoutHandler}>
-            logout
-          </Text>
         </View>
 
 

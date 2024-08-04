@@ -18,6 +18,8 @@ import { useNavigation } from '@react-navigation/native'
 import LocalStorage from '../utils/LocalStorage'
 import Mailer from 'react-native-mail';
 import Modal from "react-native-modal";
+import { GoogleSignin, User } from '@react-native-google-signin/google-signin';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 
 
@@ -30,7 +32,6 @@ const SettingScreen = () => {
 
 
 
-
     const logOutHandler = () => {
         Alert.alert('Logout!', 'User will logout from the device.', [
             {
@@ -39,9 +40,26 @@ const SettingScreen = () => {
                 style: 'cancel',
             },
             {
-                text: 'OK', onPress: () => {
-                    LocalStorage.clearAsyncStorage()
-                    navigation.navigate('MainTabScreen', { screen: 'Home' })
+                text: 'OK',
+                onPress: async () => {
+                    try {
+                        // Clear AsyncStorage
+                        await LocalStorage.clearAsyncStorage();
+
+                        // Sign out from Firebase Auth
+                        await auth().signOut();
+
+                        // Revoke and sign out from Google
+                        await GoogleSignin.revokeAccess();
+                        await GoogleSignin.signOut();
+
+                        // Navigate to the Home screen
+                        navigation.navigate('MainTabScreen', { screen: 'Home' });
+                    } catch (error) {
+                        console.error('Logout error:', error);
+                        // Optionally, show an alert or toast to notify the user of the error
+                        Alert.alert('Logout Error', 'An error occurred while logging out. Please try again.');
+                    }
                 }
             },
         ]);
@@ -214,7 +232,7 @@ const SettingScreen = () => {
                         transparent={true}
                         visible={modalVisible}
                         avoidKeyboard={true}
-                        style={{alignSelf: 'center', alignItems: 'center', justifyContent: 'center', flex: 1,width:Width*1,height:Height*1 }}
+                        style={{ alignSelf: 'center', alignItems: 'center', justifyContent: 'center', flex: 1, width: Width * 1, height: Height * 1 }}
                         onRequestClose={() => {
                             Alert.alert('Modal has been closed.');
                             setModalVisible(!modalVisible);
@@ -226,8 +244,8 @@ const SettingScreen = () => {
                             backgroundColor: 'rgba(0, 0, 0, 0.5)',
                             // padding:20,
                             flex: 1,
-                            width:Width*1,
-                            height:Height*1
+                            width: Width * 1,
+                            height: Height * 1
                         }}>
                             <View style={styles.modalMainCard}>
                                 <TouchableOpacity
