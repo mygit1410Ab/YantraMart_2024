@@ -1,16 +1,21 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
 import { PermissionsAndroid } from 'react-native'
-import { getFcmToken } from '../services/function';
+import BASEURL from '../api/baseurl';
+import URLs from '../api/urls';
+import axios from 'axios';
+
 
 
 
 const checkApplicationPermission = async () => {
   if (Platform.OS === 'android') {
+    // console.log("android permissions=======>")
     try {
-      await PermissionsAndroid.request(
+      const permission = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
       );
+      // console.log(permission)
     } catch (error) {
       console.error(error)
     }
@@ -33,6 +38,32 @@ export const requestUserPermission = async () => {
   }
 }
 
+const getFcmToken = async () => {
+  try {
+    let fcmToken = await AsyncStorage.getItem('fcmToken');
+    console.log('Old FCM Token:', fcmToken);
+
+    if (!fcmToken) {
+      fcmToken = await messaging().getToken();
+      console.log('New FCM Token:', fcmToken);
+
+      // Store the token in AsyncStorage
+      await AsyncStorage.setItem('fcmToken', fcmToken);
+      // Make the POST request to register the new token
+      await axios.post(`${BASEURL.URL}${URLs.Post_FCM_Tocken}`, {
+        currentToken: fcmToken,
+      })
+        .then(response => {
+          console.log('Token registered successfully:', response.data);
+        })
+        .catch(error => {
+          console.log('Error registering token:', error);
+        });
+    }
+  } catch (error) {
+    console.log('Error retrieving or storing FCM Token:', error);
+  }
+};
 
 
 // export const NotificationSecvices = async () => {

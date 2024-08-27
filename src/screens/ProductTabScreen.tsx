@@ -112,7 +112,7 @@ const ProductTabScreen = ({ navigation }: any) => {
         paddingRight: insets.right,
       }
     ]}>
-      <TopHeader search={true} />
+      <TopHeader search={true} wishList={true} />
       <View
         style={{
           marginBottom: 12,

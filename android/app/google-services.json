@@ -30,6 +30,14 @@
           }
         },
         {
+          "client_id": "106922038659-u8i1r281ih78nrv9jnojgmfunk4ciopk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yantramartAb1410",
+            "certificate_hash": "27e85d8f62ebb051515785fd493001f7ddef6c96"
+          }
+        },
+        {
           "client_id": "106922038659-ohqeeon6o913eik20j9148st38nc3kst.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -47,7 +55,7 @@
               "client_type": 3
             },
             {
-              "client_id": "106922038659-3tumqh9kruufhnjad2t62dsaodi8nk6k.apps.googleusercontent.com",
+              "client_id": "106922038659-3284j2kcause8a9e4jrn33gjsp4fk9b0.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.yantramart.myapplication"

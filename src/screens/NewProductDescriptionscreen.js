@@ -120,7 +120,7 @@ const NewProductDescriptionscreen = () => {
   }, [item,]);
 
 
-
+  // console.log('gallerydata=========>', gallerydata)
 
 
 
@@ -211,7 +211,7 @@ const NewProductDescriptionscreen = () => {
           paddingLeft: insets.left,
           paddingRight: insets.right,
         }]}>
-          <TopHeader wishList={false} search={true} />
+          <TopHeader wishList={true} search={true} />
           <ScrollView
             bounces={false}
             ref={scrollViewRef}
@@ -510,7 +510,7 @@ const NewProductDescriptionscreen = () => {
                   data={exploreDealList}
                   contentContainerStyle={{ paddingLeft: '3%', paddingVertical: 10 }}
                   renderItem={renderItemRelatedProduct}
-                  keyExtractor={(photo) => photo.unique_id}
+                  keyExtractor={(photo) => photo.id}
                 />
               </View>
 
@@ -526,16 +526,15 @@ const NewProductDescriptionscreen = () => {
                   </Text>
                 </View>
                 <View style={styles.containerGallery}>
-                  {gallerydata?.map((img, index) => (
+                  {gallerydata?.map((img, uri) => (
                     <View style={{ flex: 1 }}>
                       <FastImage
-                        key={index}
+                        key={uri}
                         resizeMode={FastImage.resizeMode.contain}
                         style={styles.image}
                         source={{
                           uri: img.uri,
                           priority: FastImage.priority.high,
-
                         }}
                       />
                     </View>

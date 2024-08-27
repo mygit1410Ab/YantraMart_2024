@@ -41,6 +41,8 @@ import { colors, fonts } from "./src/configs/Configs";
 import MainNavigator from "./src/navigation";
 import AppSetting from "./src/configs/AppSettings";
 import LocalStorage from "./src/utils/LocalStorage";
+import { requestUserPermission } from "./src/PushNotification/PushNotification";
+import ForGroundHandler from "./src/PushNotification/ForGroundHandler";
 
 const theme = {
   ...DefaultTheme,
@@ -106,12 +108,27 @@ const App: FunctionComponent = () => {
     CheckLogin();
     // SplashScreen.hide();
   });
+
+
+  useEffect(() => {
+    const initializeApp = async () => {
+      try {
+        await requestUserPermission();
+      } catch (error) {
+        console.error('Error during initialization:', error);
+      }
+    };
+
+    initializeApp();
+  }, []);
+
   const CheckLogin = async () => {
     AppSetting.isLoggedIn = await LocalStorage.getItem("isLoggedIN");
     // console.log("videoScreenDisplayComplete===>", AppSetting.isLoggedIn);
   };
   return (
     <SafeAreaProvider>
+      <ForGroundHandler />
       <MainNavigator />
       <Toast config={toastConfig} visibilityTime={4000} />
     </SafeAreaProvider>

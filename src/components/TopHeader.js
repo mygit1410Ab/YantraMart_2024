@@ -1,10 +1,18 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { colors } from '../configs/Configs'
 import { fontStyles } from '../style/FontsStyle'
 import SearchBar from './SearchBar'
+import { useNavigation } from '@react-navigation/native'
 
 const TopHeader = ({ notification, wishList, search }) => {
+    const navigation = useNavigation()
+
+
+    const notificationHandler = () => {
+        navigation.navigate('Notification')
+    }
+
     return (
         <View style={styles.sub_navbar}>
             <Image
@@ -28,14 +36,20 @@ const TopHeader = ({ notification, wishList, search }) => {
                 {"YANTRAMART"}
             </Text> */}
             <View style={{ flex: 1, }} />
-            <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 0.8 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 0.8 }}>
                 {search &&
                     <SearchBar placeHolder={false} />
                 }
-                {notification && <Image
-                    style={styles.logo_notification}
-                    source={require("../assets/images/notification.png")}
-                />}
+                {notification && <TouchableOpacity
+                // onPress={notificationHandler}
+                // style={{ borderWidth: 1 }}
+                >
+
+                    {/* <Image
+                        style={styles.logo_notification}
+                        source={require("../assets/images/notification.png")}
+                    /> */}
+                </TouchableOpacity>}
 
                 {wishList && <Image
                     style={styles.logo_heartIcon}

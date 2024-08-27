@@ -18,6 +18,7 @@ const URLs = {
   Get_Top_Locations: "/App_api/getTopLocation",
   Get_Top_Users: "/App_api/getTopUsers",
   Get_Blogs: "/App_api/getBlogs",
+  Post_FCM_Tocken: "/App_api/register_token",
 
 
 
