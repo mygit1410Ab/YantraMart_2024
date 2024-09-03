@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Platform } from 'react-native';
+import { Platform, Linking } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import notifee, { AndroidImportance, EventType, AndroidStyle } from '@notifee/react-native';
 
@@ -40,7 +40,8 @@ const ForGroundHandler = () => {
           importance: AndroidImportance.HIGH,
           vibrationPattern: [300, 500],
           pressAction: {
-            id: 'default',
+            id: 'default', // This should trigger the event when pressed
+            launchActivity: 'default', // This ensures the app is launched when pressed
           },
         },
         ios: {
@@ -61,10 +62,18 @@ const ForGroundHandler = () => {
 
     // Handle foreground events like notification presses
     const foregroundListener = notifee.onForegroundEvent(({ type, detail }) => {
-      const { notification } = detail;
+      const { notification, pressAction } = detail;
+      const clickActionUrl = notification?.data?.click_action;
 
-      if (type === EventType.PRESS) {
+      if (type === EventType.PRESS && pressAction.id === 'default') {
         console.log('Foreground notification pressed:', notification);
+        if (clickActionUrl) {
+          // Open the click_action URL
+          Linking.openURL(clickActionUrl).catch(err => console.error('Failed to open URL:', err));
+        } else {
+          // Handle the case where there's no click_action
+          console.log('No click_action URL provided.');
+        }
         // Handle navigation or logic here, e.g., navigate to a specific screen
       }
     });

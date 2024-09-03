@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import { AppRegistry, Platform } from 'react-native';
+import { AppRegistry, Platform, Linking } from 'react-native';
 import App from './App';
 import { name as appName } from './app.json';
 import messaging from '@react-native-firebase/messaging';
@@ -59,11 +59,17 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
 // Handle background events (like notification press)
 notifee.onBackgroundEvent(async ({ type, detail }) => {
     const { notification, pressAction } = detail;
+    const clickActionUrl = notification?.data?.click_action;
 
     if (type === EventType.PRESS && pressAction.id === 'default') {
         console.log('Background notification pressed:', notification);
-        // Add navigation logic here if you are using React Navigation, e.g.:
-        // NavigationService.navigate('YourTargetScreen', { param: value });
+        if (clickActionUrl) {
+            // Open the click_action URL
+            Linking.openURL(clickActionUrl).catch(err => console.error('Failed to open URL:', err));
+        } else {
+            // Handle the case where there's no click_action
+            console.log('No click_action URL provided.');
+        }
     }
 });
 
